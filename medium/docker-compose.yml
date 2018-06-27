@@ -1,0 +1,27 @@
+version: '2'
+services:
+  client:
+    container_name: client
+    build:
+      context: ./client
+    networks:
+      - shared
+  python:
+    container_name: python-server
+    build:
+      context: ./python
+    expose:
+      - 50051
+    networks:
+      - shared
+  node:
+    container_name: node-server
+    build:
+      context: ./node
+    expose:
+      - 50051
+    networks:
+      - shared
+    
+networks:
+  shared:
