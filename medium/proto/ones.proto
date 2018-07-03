@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+// This is the One message. It's nothing special, just an object encapsulating a
+// float (which, confusingly, does not need to be '1')
+message One {
+    // Float value contained within the one
+    float value = 1;
+}
+
+// The folks at google like to encapsulate the base messages within a further
+// layer of encapsulation that defines what a request/response would look like
+// Note how this is structured as a <Verb><MessageNoun><TypeNoun> composition.
+message GetOneRequest {
+    // This message contains a message of type `One` within it
+    One value = 1;
+}
+
+// The folks at google like to encapsulate the base messages within a further
+// layer of encapsulation that defines what a request/response would look like
+// Note how this is structured as a <Verb><MessageNoun><TypeNoun> composition.
+message GetOneResponse {
+    // This message contains a message of type `One` within it
+    One value = 1;
+}
+
+// Interface exposed by the Ones Service
+service Ones {
+
+    // This servers's sole RPC: get a One, return a One
+    rpc EchoOne(GetOneRequest) returns (GetOneResponse) {}
+}

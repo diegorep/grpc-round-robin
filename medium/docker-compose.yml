@@ -3,25 +3,38 @@ services:
   client:
     container_name: client
     build:
-      context: ./client
+      context: ./python
+    entrypoint: python ./client.py
     networks:
-      - shared
+      somenet:
+        ipv4_address: 173.0.0.2
+    depends_on:
+      - python
+      - node
   python:
     container_name: python-server
     build:
       context: ./python
+    entrypoint: python ./server.py
     expose:
       - 50051
     networks:
-      - shared
+      somenet:
+        ipv4_address: 173.0.0.3
   node:
     container_name: node-server
     build:
       context: ./node
+    entrypoint: node index.js
     expose:
-      - 50051
+      - 50050
     networks:
-      - shared
+      somenet:
+        ipv4_address: 173.0.0.4
     
 networks:
-  shared:
+  somenet:
+    ipam:
+      config:
+        - subnet: 173.0.0.0/16
+          gateway: 173.0.0.9

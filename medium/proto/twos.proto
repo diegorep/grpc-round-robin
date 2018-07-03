@@ -5,7 +5,7 @@ message Two {
 }
 
 message GetTwoRequest {
-    float value = 1;
+    Two value = 1;
 }
 
 message GetTwoResponse {
