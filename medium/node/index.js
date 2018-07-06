@@ -5,12 +5,15 @@ const server = new grpc.Server();
 
 
 function echoTwo(call, done) {
-  if (call.request.value.value === 2) {
-    two = messages.twos_pb2.Two({value: 2});
+  requestValue = call.request.getValue();
+  if (requestValue.getValue() === 2) {
+    twoVal = 2.0;
   } else {
-    two = messages.twos_pb2.Two({value: 2});
+    twoVal = -2.0;
   }
-  response = messages.twos_pb2.GetTwoResponse();
+  two = new messages.Two();
+  two.setValue(twoVal);
+  response = new messages.GetTwoResponse();
   response.setValue(two);
   done(null, response);
 }

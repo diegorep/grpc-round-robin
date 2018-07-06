@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+message Three {
+    float value = 1;
+}
+
+message GetThreeRequest {
+    Three value = 1;
+}
+
+message GetThreeResponse {
+    Three value = 1;
+}
+
+service Threes {
+    rpc EchoThree(GetThreeRequest) returns (GetThreeResponse) {}
+}

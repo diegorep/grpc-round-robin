@@ -11,6 +11,7 @@ services:
     depends_on:
       - python
       - node
+      - go
   python:
     container_name: python-server
     build:
@@ -31,6 +32,16 @@ services:
     networks:
       somenet:
         ipv4_address: 173.0.0.4
+  go:
+    container_name: go-server
+    build:
+      context: ./go
+    entrypoint: go run main.go
+    expose:
+      - 50049
+    networks:
+      somenet:
+        ipv4_address: 173.0.0.5
     
 networks:
   somenet:

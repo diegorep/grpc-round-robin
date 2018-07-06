@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='twos.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\ntwos.proto\"\x14\n\x03Two\x12\r\n\x05value\x18\x01 \x01(\x02\"\x1e\n\rGetTwoRequest\x12\r\n\x05value\x18\x01 \x01(\x02\"%\n\x0eGetTwoResponse\x12\x13\n\x05value\x18\x01 \x01(\x0b\x32\x04.Two24\n\x04Twos\x12,\n\x07\x45\x63hoTwo\x12\x0e.GetTwoRequest\x1a\x0f.GetTwoResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\ntwos.proto\"\x14\n\x03Two\x12\r\n\x05value\x18\x01 \x01(\x02\"$\n\rGetTwoRequest\x12\x13\n\x05value\x18\x01 \x01(\x0b\x32\x04.Two\"%\n\x0eGetTwoResponse\x12\x13\n\x05value\x18\x01 \x01(\x0b\x32\x04.Two24\n\x04Twos\x12,\n\x07\x45\x63hoTwo\x12\x0e.GetTwoRequest\x1a\x0f.GetTwoResponse\"\x00\x62\x06proto3')
 )
 
 
@@ -65,8 +65,8 @@ _GETTWOREQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='value', full_name='GetTwoRequest.value', index=0,
-      number=1, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=float(0),
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
@@ -83,7 +83,7 @@ _GETTWOREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=36,
-  serialized_end=66,
+  serialized_end=72,
 )
 
 
@@ -113,10 +113,11 @@ _GETTWORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=68,
-  serialized_end=105,
+  serialized_start=74,
+  serialized_end=111,
 )
 
+_GETTWOREQUEST.fields_by_name['value'].message_type = _TWO
 _GETTWORESPONSE.fields_by_name['value'].message_type = _TWO
 DESCRIPTOR.message_types_by_name['Two'] = _TWO
 DESCRIPTOR.message_types_by_name['GetTwoRequest'] = _GETTWOREQUEST
@@ -152,8 +153,8 @@ _TWOS = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=107,
-  serialized_end=159,
+  serialized_start=113,
+  serialized_end=165,
   methods=[
   _descriptor.MethodDescriptor(
     name='EchoTwo',
