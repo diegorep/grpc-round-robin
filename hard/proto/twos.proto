@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+message Two {
+    float value = 1;
+}
+
+message GetTwoRequest {
+    Two value = 1;
+}
+
+message GetTwoResponse {
+    Two value = 1;
+}
+
+service Twos {
+    rpc EchoTwo(GetTwoRequest) returns (GetTwoResponse) {}
+}

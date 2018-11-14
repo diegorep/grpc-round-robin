@@ -1,0 +1,6 @@
+- Operates three unique services, in three different runtimes, each exposing a single, unary RPC (python, node, go)
+- Python client calls all three RPCs
+- Services and client share a network with hard-coded IPs
+- Ideal file structure is suggested
+- Code gen is done via distinct tools (protoc, python grpc-tools and node grpc\_tools)
+- Code gen scripts are centralized into single bash file

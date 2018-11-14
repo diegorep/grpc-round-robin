@@ -1,0 +1,47 @@
+version: '2'
+services:
+  client:
+    build:
+      context: ./python
+    entrypoint: python ./client.py
+    networks:
+      somenet:
+        ipv4_address: 173.0.0.2
+    depends_on:
+      - python
+      - node
+      - go
+  python:
+    build:
+      context: ./python
+    entrypoint: python ./server.py
+    expose:
+      - 50051
+    networks:
+      somenet:
+        ipv4_address: 173.0.0.3
+  node:
+    build:
+      context: ./node
+    entrypoint: node index.js
+    expose:
+      - 50050
+    networks:
+      somenet:
+        ipv4_address: 173.0.0.4
+  go:
+    build:
+      context: ./go
+    entrypoint: go run main.go
+    expose:
+      - 50049
+    networks:
+      somenet:
+        ipv4_address: 173.0.0.5
+    
+networks:
+  somenet:
+    ipam:
+      config:
+        - subnet: 173.0.0.0/16
+          gateway: 173.0.0.9

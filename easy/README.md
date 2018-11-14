@@ -1,0 +1,4 @@
+- Operates a single python service which in turn exposes a single, unary RPC
+- Python client on shared network calls remote RPC
+- No file structure is suggested
+- Uses python grpcio/grpio-tools binaries for codegen

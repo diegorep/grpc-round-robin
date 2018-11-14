@@ -1,0 +1,59 @@
+version: '2'
+services:
+  client:
+    container_name: client
+    build:
+      context: ./python
+    entrypoint: python ./client.py
+    networks:
+      digit-public:
+        aliases:
+          - client
+    depends_on:
+      - python
+      - node
+      - go
+  python:
+    container_name: python-server
+    build:
+      context: ./python
+    entrypoint: python ./server.py
+    expose:
+      - 50051
+    networks:
+      digit-public:
+        aliases:
+          - ones.digitapis.com
+      digit-dmz:
+        aliases:
+          - ones.digitapis.com
+  node:
+    container_name: node-server
+    build:
+      context: ./node
+    entrypoint: node index.js
+    expose:
+      - 50050
+    networks:
+      digit-dmz:
+        aliases:
+          - twos.digitapis.com
+      digit-private:
+        aliases:
+          - twos.digitapis.com
+  go:
+    container_name: go-server
+    build:
+      context: ./go
+    entrypoint: go run main.go
+    expose:
+      - 50049
+    networks:
+      digit-private:
+        aliases:
+          - threes.digitapis.com
+    
+networks:
+  digit-public:
+  digit-dmz:
+  digit-private:
